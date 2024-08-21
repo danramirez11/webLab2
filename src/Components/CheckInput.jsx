@@ -1,16 +1,8 @@
-const checkStyle = {
-    backgroundColor: 'white',
-    color: 'black',
-    padding: '20px',
-    borderRadius: '20px',
-    border: 'none',
-    'box-shadow': '0 0 4px rgba(0, 0, 0, 0.3)',
-    cursor: 'pointer'
-}
+import './inputs.css'
 
 const CheckInput = (props) => {
     return (
-        <button style={checkStyle}>
+        <button>
             Hola hola
         </button>
     )
