@@ -9,7 +9,7 @@ const Quizz = () => {
         <>
         <h1>Which pet is the best for you?</h1>
         <QuizzSection 
-        data= {questions} results= {results}></QuizzSection>
+        data= {questions}></QuizzSection>
         </>
     )
 }

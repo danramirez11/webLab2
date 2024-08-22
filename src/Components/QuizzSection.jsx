@@ -4,8 +4,9 @@ import SliderInput from "./SliderInput";
 import { useState } from "react";
 import TextInput from "./TextInput";
 import ResultCard from "./ResultCard";
+import results from "../data/results";
 
-const QuizzSection = (data, results) => {
+const QuizzSection = (questions) => {
     const [points, setPoints] = useState({
         Dog: 0,
         Cat: 0,
@@ -94,35 +95,20 @@ const QuizzSection = (data, results) => {
         const finalAnimal = results.filter((a) => {
             return a.name === maxKey
         })
+        console.log(finalAnimal)
 
         setResult(finalAnimal);
+
+        setStep(step + 1)
     }
 
     
     return (
         <>
-        { step === 0 && (
-            renderQuestion(data.data[0])
+        { step < questions.data.length && (
+            renderQuestion(questions.data[step])
         )}
-        { step === 1 && (
-            renderQuestion(data.data[step])
-        )}
-        { step === 2 && (
-            renderQuestion(data.data[step])
-        )}
-        { step === 3 && (
-            renderQuestion(data.data[step])
-        )}
-        { step === 4 && (
-            renderQuestion(data.data[step])
-        )}
-        { step === 5 && (
-            renderQuestion(data.data[step])
-        )}
-        { step === 6 && (
-            renderQuestion(data.data[step])
-        )}
-        { step === 7 && (
+        { step === questions.data.length && (
             <ResultCard result = {result}></ResultCard>
         )}
         </>
