@@ -62,7 +62,7 @@ const QuizzSection = (questions) => {
                     return (
                         <div key={question.id}>
                         <h2>{question.question}</h2>
-                        <SliderInput props={question.answers}></SliderInput>
+                        <SliderInput props={question.answers} onSelect={handleAnswer}></SliderInput>
                         </div>
                     )
                 default:
