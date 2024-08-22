@@ -3,8 +3,9 @@ import CheckInput from "./CheckInput";
 import SliderInput from "./SliderInput";
 import { useState } from "react";
 import TextInput from "./TextInput";
+import ResultCard from "./ResultCard";
 
-const QuizzSection = (questions) => {
+const QuizzSection = (data, results) => {
     const [points, setPoints] = useState({
         Dog: 0,
         Cat: 0,
@@ -13,6 +14,7 @@ const QuizzSection = (questions) => {
         Fish: 0
     });
     const [step, setStep] = useState(0);
+    const [result, setResult] = useState({});
 
     const handleAnswer = (receivedPoints) => {
         console.log(receivedPoints)
@@ -68,7 +70,9 @@ const QuizzSection = (questions) => {
                     <div key={question.id}>
                     <h2>{question.question}</h2>
                     <TextInput/>
-                    <button>Finish Test</button>
+                    <button onClick={() => {
+                        finishTest()
+                    }}>Finish Test</button>
                     </div>
                 )
 
@@ -77,29 +81,49 @@ const QuizzSection = (questions) => {
         }
     }
 
+    const finishTest = () => {
+        console.log(results)
+        let maxPoints = 0;
+        let maxKey = "";
+        for (const key in points) {
+            if (points[key] > maxPoints) {
+                maxPoints = points[key];
+                maxKey = key;
+            }
+        }
+        const finalAnimal = results.filter((a) => {
+            return a.name === maxKey
+        })
+
+        setResult(finalAnimal);
+    }
+
     
     return (
         <>
         { step === 0 && (
-            renderQuestion(questions.data[0])
+            renderQuestion(data.data[0])
         )}
         { step === 1 && (
-            renderQuestion(questions.data[step])
+            renderQuestion(data.data[step])
         )}
         { step === 2 && (
-            renderQuestion(questions.data[step])
+            renderQuestion(data.data[step])
         )}
         { step === 3 && (
-            renderQuestion(questions.data[step])
+            renderQuestion(data.data[step])
         )}
         { step === 4 && (
-            renderQuestion(questions.data[step])
+            renderQuestion(data.data[step])
         )}
         { step === 5 && (
-            renderQuestion(questions.data[step])
+            renderQuestion(data.data[step])
         )}
         { step === 6 && (
-            renderQuestion(questions.data[step])
+            renderQuestion(data.data[step])
+        )}
+        { step === 7 && (
+            <ResultCard result = {result}></ResultCard>
         )}
         </>
     )
