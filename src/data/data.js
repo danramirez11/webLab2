@@ -149,3 +149,5 @@ const results = [
         description: "Fish are low-maintenance, peaceful, and beautiful. They are great for people with limited space or time."
     }
 ]
+
+export default questions

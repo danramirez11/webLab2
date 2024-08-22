@@ -1,9 +1,9 @@
 import './inputs.css'
 
-const CheckInput = (props) => {
+const CheckInput = ({props}) => {
     return (
         <button>
-            Hola hola
+            {props.answer}
         </button>
     )
 }
