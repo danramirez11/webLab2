@@ -5,8 +5,7 @@ const questions = [
         type: "counter",
         answers: {
             min: ["Reptile", "Fish"],
-            med: ["Cat", "Bird"],
-            max: ["Dog"]
+            max: ["Dog", "Cat", "Bird"]
         }
     },
     {
@@ -85,7 +84,7 @@ const questions = [
         question: "Do you prefer pets that are affectionate or independent?",
         type: "slider",
         answers: {
-            ends: ["Affectionate", "Independent"],
+            ends: ["Independent", "Affectionate"],
             points: {
                 min: ["Reptile", "Fish"],
                 max: ["Dog", "Cat", "Bird"]

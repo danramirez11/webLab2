@@ -1,7 +1,33 @@
 import CounterInput from "./CounterInput";
 import CheckInput from "./CheckInput";
+import SliderInput from "./SliderInput";
+import { useState } from "react";
 
 const QuizzSection = (questions) => {
+    const [points, setPoints] = useState({
+        Dog: 0,
+        Cat: 0,
+        Bird: 0,
+        Reptile: 0,
+        Fish: 0
+    });
+
+    const handleAnswer = (receivedPoints) => {
+        receivedPoints.forEach((point) => {
+            setPoints((prev) => {
+                return {
+                    ...prev,
+                    [point]: prev[point] + 1
+                }
+            })
+        })
+        
+        setTimeout(() => {
+            console.log(points)
+        }, 10000);
+    };
+
+    
     return (
         <>
         {questions.data.map((question) => {
@@ -10,7 +36,10 @@ const QuizzSection = (questions) => {
                     return (
                         <div key={question.id}>
                         <h2>{question.question}</h2>
-                        <CounterInput></CounterInput>
+                        <CounterInput 
+                        onSelect={handleAnswer} 
+                        props={question.answers}>
+                        </CounterInput>
                         </div>
                     )
                 case "multiple":
@@ -28,7 +57,7 @@ const QuizzSection = (questions) => {
                     return (
                         <div key={question.id}>
                         <h2>{question.question}</h2>
-                        <input type="range" min="0" max="100" step="1"></input>
+                        <SliderInput props={question.answers}></SliderInput>
                         </div>
                     )
                 default:
