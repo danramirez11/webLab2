@@ -13,6 +13,7 @@ const QuizzSection = (questions) => {
     });
 
     const handleAnswer = (receivedPoints) => {
+        console.log(receivedPoints)
         receivedPoints.forEach((point) => {
             setPoints((prev) => {
                 return {
@@ -32,6 +33,7 @@ const QuizzSection = (questions) => {
         <>
         {questions.data.map((question) => {
             switch (question.type) {
+
                 case "counter":
                     return (
                         <div key={question.id}>
@@ -42,17 +44,20 @@ const QuizzSection = (questions) => {
                         </CounterInput>
                         </div>
                     )
+
                 case "multiple":
                     return (
                         <div key={question.id}>
                         <h2>{question.question}</h2>
                         {question.answers.map((answer) => {
                             return (
-                                <CheckInput key={answer.id} props={answer}></CheckInput>
+                                <CheckInput key={answer.id} props={answer}
+                                onSelect={handleAnswer}></CheckInput>
                             )
                         })}
                         </div>
                     )
+
                 case "slider":
                     return (
                         <div key={question.id}>

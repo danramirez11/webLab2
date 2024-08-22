@@ -1,8 +1,8 @@
 import './inputs.css'
 
-const CheckInput = ({props}) => {
+const CheckInput = ({props, onSelect}) => {
     return (
-        <button>
+        <button onClick={() => {onSelect(props.points)}}>
             {props.answer}
         </button>
     )
