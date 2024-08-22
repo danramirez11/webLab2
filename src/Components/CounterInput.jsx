@@ -1,7 +1,5 @@
 import './inputs.css'
 
-import './inputs.css'
-
 const CounterInput = ({props, onSelect}) => {
 
     const selectOptions = (value) => {

@@ -4,6 +4,7 @@ import SliderInput from "./SliderInput";
 import { useState } from "react";
 import TextInput from "./TextInput";
 import ResultCard from "./ResultCard";
+import './quizz.css'
 
 const QuizzSection = ({data}) => {
     const {questions, results} = data;
@@ -28,8 +29,6 @@ const QuizzSection = ({data}) => {
                 }
             })
         })
-        
-        setStep(step + 1)
     };
 
     const renderQuestion = (question) => {
@@ -37,7 +36,7 @@ const QuizzSection = ({data}) => {
 
             case "counter":
                 return (
-                    <div key={question.id}>
+                    <div className="queDiv" key={question.id}>
                     <h2>{question.question}</h2>
                     <CounterInput 
                     onSelect={handleAnswer} 
@@ -48,7 +47,7 @@ const QuizzSection = ({data}) => {
 
             case "multiple":
                 return (
-                    <div key={question.id}>
+                    <div className="queDiv" key={question.id}>
                     <h2>{question.question}</h2>
                     {question.answers.map((answer) => {
                         return (
@@ -61,7 +60,7 @@ const QuizzSection = ({data}) => {
 
             case "slider":
                 return (
-                    <div key={question.id}>
+                    <div className="queDiv" key={question.id}>
                     <h2>{question.question}</h2>
                     <SliderInput props={question.answers} onSelect={handleAnswer}></SliderInput>
                     </div>
@@ -69,12 +68,9 @@ const QuizzSection = ({data}) => {
 
             case "text":
                 return (
-                    <div key={question.id}>
+                    <div className="queDiv" key={question.id}>
                     <h2>{question.question}</h2>
-                    <TextInput/>
-                    <button onClick={() => {
-                        finishTest()
-                    }}>Finish Test</button>
+                    <TextInput prop={question}/>
                     </div>
                 )
 
@@ -103,15 +99,34 @@ const QuizzSection = ({data}) => {
         setStep(step + 1)
     }
 
+    const nextQue = () => {
+        setStep(step + 1)
+    }
+
+    const goBack = () => {
+        setStep(step - 1)
+    }
+
     
     return (
         <>
+
+        <h4>{step}/{questions.length}</h4>
+
         { step < questions.length && (
             renderQuestion(questions[step])
         )}
         { step === questions.length && (
             <ResultCard result = {result}></ResultCard>
         )}
+
+        <div className="buttonDiv">
+        { step !== 0 ? <button onClick={goBack}>Go back</button> : null}
+
+        {step === questions.length-1 ? <button onClick={finishTest}>Finish Test</button> : 
+        <button onClick={nextQue}>Next Question</button>}
+        </div>
+        
         </>
     )
 }

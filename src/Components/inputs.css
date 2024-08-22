@@ -11,3 +11,15 @@ input, button{
 input[type=number]::-webkit-inner-spin-button {
     opacity: 1;
 }
+
+input[type=range] {
+    width: 100%;
+    height: 10px;
+    background-color: #ddd;
+    box-shadow: none;
+    border-radius: 5px;
+}
+
+.selected{
+    box-shadow: 0 0 4px rgba(0, 120, 226, 0.619);
+}

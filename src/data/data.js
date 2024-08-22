@@ -2,6 +2,12 @@ const quizzData = {
     questions: [
     {
         id: 0,
+        question: "Write your email",
+        type: "text",
+        specific: "email"
+    },
+    {
+        id: 0,
         question: "How much time in hours do you have to spend on pet care each day?",
         type: "counter",
         answers: {

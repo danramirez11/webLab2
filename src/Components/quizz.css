@@ -1,0 +1,23 @@
+.buttonDiv{
+    margin: 20px;
+    padding: 20px;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.buttonDiv button{
+    box-shadow: none;
+    background-color: #f1f1f1;
+}
+
+.queDiv{
+    margin: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 8px;
+    border: solid;
+    border-color: #f1f1f1;
+}

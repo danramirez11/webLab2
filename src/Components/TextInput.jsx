@@ -1,8 +1,8 @@
 import './inputs.css'
 
-const TextInput = () => {
+const TextInput = ({prop}) => {
     return (
-        <input type="text" />
+        <input type={prop.specific ? 'email' : 'text'} />
     );
 }
 
