@@ -5,8 +5,8 @@ import { useState } from "react";
 import TextInput from "./TextInput";
 import ResultCard from "./ResultCard";
 
-const QuizzSection = (data) => {
-    const {questions, results} = data.data;
+const QuizzSection = ({data}) => {
+    const {questions, results} = data;
 
     const [points, setPoints] = useState({
         Dog: 0,
